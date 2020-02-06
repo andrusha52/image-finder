@@ -28,9 +28,10 @@ btnLoadMore:false,
     this.setState({
       searchImage:[],
       spinnerON: true,
+      pageRa: 1,
     })
     const value = this.state.inputValue;
-    const pageLoad = this.state.pageRa;
+    const pageLoad = 1;
     if(value===""){
       return
     }else{
