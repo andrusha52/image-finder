@@ -68,7 +68,8 @@ btnLoadMore:false,
           APIkey +
           "&image_type=photo&orientation=horizontal&per_page=12"
       )
-      .then(res =>{if(res.data.hits.length){ this.setState(prev=>({
+
+      .then(res =>{if(res.data.hits.length !==0){ this.setState(prev=>({
         btnLoadMore: true,
         searchImage: [...prev.searchImage, ...res.data.hits]}))}else{ this.setState(prev=>({
           btnLoadMore: false,
@@ -111,7 +112,7 @@ btnLoadMore:false,
         <Searchbar  searchValue={this.searchValue} inputOnChange={this.inputOnChange} />
         <ImageGallery  searchImage={this.state.searchImage} openModal={this.openModal}/> 
 
-       {this.state.btnLoadMore ?<button onClick={this.loadMore} className={css.Button}>LOAD MORE</button> : null}
+       {this.state.btnLoadMore&& this.state.searchImage.length>11? <button onClick={this.loadMore} className={css.Button}>LOAD MORE</button> : null}
       </>
     )
   }
